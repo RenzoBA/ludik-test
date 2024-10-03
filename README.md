@@ -48,27 +48,30 @@ Nota: Windows 11 como sistema operativo (SO).
    Copia el archivo de configuración de ejemplo y actualiza las variables de entorno necesarias: `cp .env.example .env`.
 
 4. **Inicia MySQL:**
-   Abre el Panel de Control de XAMPP y asegúrate de iniciar tanto Apache como MySQL para que el servidor web y la base de datos estén activos.
+   Abre el Panel de Control de XAMPP y asegúrate de iniciar tanto Apache como MySQL para que el servidor web y la base de datos estén activos. Ingresa a `http://localhost/phpmyadmin/` y crea una nueva base de datos con el nombre que le has asignado a la variable de entorno `DB_DATABASE` en tu `.env`.
 
-5. **Ejecuta las migraciones:**
+5. **Genera la App Key:**
+   Genera la clave de la aplicación ejecutando el siguiente comando: `php artisan key:generate`.
+
+6. **Ejecuta las migraciones:**
    Para crear las tablas necesarias en tu base de datos, ejecuta las migraciones: `php artisan migrate`.
 
-6. **Ejecuta el servidor de desarrollo:**
-   Inicia el servidor de desarrollo de Laravel para interactuar con la aplicación y probar las rutas del CRUD con el comando: `uvicorn main:app --reload`
+7. **Ejecuta el servidor de desarrollo:**
+   Inicia el servidor de desarrollo de Laravel para interactuar con la aplicación y probar las rutas del CRUD con el comando: `php artisan serve`.
 
-7. **Prueba las funcionalidades:**
+8. **Prueba las funcionalidades:**
    Usa Postman, Insomnia, o cualquier herramienta de tu elección para probar las rutas de la API que gestionan productos.
 
 ## Rutas y Controladores
 
 Las siguientes rutas fueron configuradas para manejar las operaciones del CRUD:
 
--   `GET /products` — Muestra la lista de productos.
--   `GET /products/{id}` — Muestra un producto específico.
--   `POST /products` — Crea un nuevo producto.
--   `PUT /products/{id}` — Actualiza completamente un producto existente.
--   `PATCH /products/{id}` — Actualiza parcialmente un producto.
--   `DELETE /products/{id}` — Elimina un producto.
+-   `GET /api/products` — Muestra la lista de productos.
+-   `GET /api/products/{id}` — Muestra un producto específico.
+-   `POST /api/products` — Crea un nuevo producto.
+-   `PUT /api/products/{id}` — Actualiza completamente un producto existente.
+-   `PATCH /api/products/{id}` — Actualiza parcialmente un producto.
+-   `DELETE /api/products/{id}` — Elimina un producto.
 
 Los controladores correspondientes fueron implementados con todas las acciones necesarias para cada operación.
 
